@@ -1,5 +1,8 @@
 # vim:ts=2:sw=2:et
-dist: precise
+os: linux
+
+# Partner Queue Solution, no credits are consumed
+arch: ppc64le
 
 language: php
 
@@ -58,7 +61,6 @@ jobs:
         - sudo apt update
         - sudo apt install php8.5
         - php -v
-
 
 before_script:
   - composer update --dev 2>&1
