@@ -3,17 +3,65 @@ dist: precise
 
 language: php
 
-php:
-  - 5.3
-  - 5.4
-  - 5.5
-  - 5.6
-  - 7.0
-  - 7.1
-  - 7.2
+jobs:
+  include:
+    - php: 5.6
+      dist: xenial
+    - php: 7.0
+      dist: xenial
+    - php: 7.1
+      dist: xenial
+    - php: 7.2
+      dist: xenial
+    - php: 7.3
+      dist: xenial
+    - php: 7.4
+      dist: focal
+    - php: 8.0
+      dist: focal
+    - php: 8.1
+      dist: focal
+    - name: "PHP: 8.2"
+      dist: jammy
+      language: ruby # This makes no sence to me, but it works!
+      before_install:
+        - sudo apt install software-properties-common
+        - sudo add-apt-repository ppa:ondrej/php
+        - sudo apt update
+        - sudo apt install php8.2
+        - php -v
+        - sudo apt install libonig5
+    - name: "PHP: 8.3"
+      dist: jammy
+      language: ruby # This makes no sence to me, but it works!
+      before_install:
+        - sudo apt install software-properties-common
+        - sudo add-apt-repository ppa:ondrej/php
+        - sudo apt update
+        - sudo apt install php8.3
+        - php -v
+    - name: "PHP: 8.4"
+      dist: jammy
+      language: ruby # This makes no sence to me, but it works!
+      before_install:
+        - sudo apt install software-properties-common
+        - sudo add-apt-repository ppa:ondrej/php
+        - sudo apt update
+        - sudo apt install php8.4
+        - php -v
+    - name: "PHP: 8.5"
+      dist: jammy
+      language: ruby # This makes no sence to me, but it works!
+      before_install:
+        - sudo apt install software-properties-common
+        - sudo add-apt-repository ppa:ondrej/php
+        - sudo apt update
+        - sudo apt install php8.5
+        - php -v
+
 
 before_script:
-  - composer update --dev
+  - composer update --dev 2>&1
 
 script:
-  - cd test && curl --silent https://raw.githubusercontent.com/atk14/Atk14/master/src/scripts/run_unit_tests | php
+  - cd test && ../vendor/bin/run_unit_tests
