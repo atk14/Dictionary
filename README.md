@@ -1,6 +1,8 @@
 Dictionary
 ==========
 
+[![Tests](https://github.com/atk14/Dictionary/actions/workflows/tests.yml/badge.svg)](https://github.com/atk14/Dictionary/actions/workflows/tests.yml)
+
 Dictionary implementation used in the ATK14 Framework
 
 Basic usage
